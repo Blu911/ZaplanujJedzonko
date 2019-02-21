@@ -20,4 +20,4 @@ Na liście pojawi się plik **Tomcat Context Descriptor**. Potwierdź przyciskie
 
 Plik znajduje się w naszym projekcie w katalogu **META-INF**.
 
-`Zmodyfikuj znajdujące się w nim dane dotyczące połączenia.`
+`Zmodyfikuj znajdujące się w nim dane dotyczące połączenia.`# ZaplanujJedzonko
