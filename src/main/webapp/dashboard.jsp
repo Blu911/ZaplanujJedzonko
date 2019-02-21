@@ -110,11 +110,12 @@
                     <span>Ostatnio dodany plan:</span> ${planWithDetails.name}
                 </h2>
 
-                <c:set var="dayToCheck" value=""/>
-                <c:forEach items="${planWithDetails.planDetailList}" var="planDetail">
-                <c:choose>
-                <c:when test="${dayToCheck != planDetail.dayName}">
+
                 <table class="table">
+                    <c:set var="dayToCheck" value=""/>
+                    <c:forEach items="${planWithDetails.planDetailList}" var="planDetail">
+                        <c:choose>
+                            <c:when test="${dayToCheck != planDetail.dayName}">
                     <thead>
                     <tr class="d-flex">
                         <th class="col-2">${planDetail.dayName}</th>
@@ -130,8 +131,10 @@
                             <a href="" class="btn btn-info rounded-0 text-light m-1">Szczegóły</a>
                         </td>
                     </tr>
+
                     </c:when>
                     <c:otherwise>
+
                     <tr class="d-flex">
                         <td class="col-2">${planDetail.mealName}</td>
                         <td class="col-8">${planDetail.recipeName}</td>
@@ -139,15 +142,18 @@
                             <a href="" class="btn btn-info rounded-0 text-light m-1">Szczegóły</a>
                         </td>
                     </tr>
+
                     </c:otherwise>
                     </c:choose>
                         <c:set var="dayToCheck" value="${planDetail.dayName}"/>
                     </c:forEach>
+                </table>
 
             </div>
         </div>
     </div>
 </section>
+<%@include file="components/footer.jsp"%>
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
