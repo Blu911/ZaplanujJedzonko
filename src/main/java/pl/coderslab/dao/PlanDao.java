@@ -36,14 +36,13 @@ public class PlanDao {
     private static final String READ_PLAN_BY_ADMIN_ID_QUERY = "SELECT * from plan where admin_id = ?";
 
     /**Moje rozwiązanie - Krystian**/
-    private static final String GET_PLAN_DETAILS_QUERY2 = "SELECT recipe_plan.id, day_name.name as day_name, meal_name,  " +
-            "recipe.name as recipe_name, " +
-            "recipe.description as recipe_description, " +
-            "recipe.id as recipe_id, " +
-            "recipe_plan.order " +
-            "FROM `recipe_plan` " +
-            "JOIN day_name on day_name.id=day_name_id " +
-            "JOIN recipe on recipe.id=recipe_id WHERE admin_id = ?" +
+    private static final String GET_PLAN_DETAILS_QUERY2 = "SELECT day_name.name as day_name, " +
+            "day_name.order as day_name_order, recipe_plan.meal_name, " +
+            "recipe_plan.order as meal_order, recipe.name as recipe_name, " +
+            "recipe_plan.order as recipe_order, recipe.id as recipe_id " +
+            "FROM `recipe_plan` JOIN day_name on day_name.id=day_name_id " +
+            "JOIN recipe on recipe.id=recipe_id " +
+            "WHERE admin_id = ? " +
             "ORDER by day_name.order, recipe_plan.order";
 
     /**
@@ -62,13 +61,13 @@ public class PlanDao {
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     PlanWithMeals planWithMealsToAdd = new PlanWithMeals();
-                    planWithMealsToAdd.setId(resultSet.getInt("id"));
                     planWithMealsToAdd.setDay_name(resultSet.getString("day_name"));
+                    planWithMealsToAdd.setDay_name_order(resultSet.getInt("day_name_order"));
                     planWithMealsToAdd.setMeal_name(resultSet.getString("meal_name"));
+                    planWithMealsToAdd.setMeal_order(resultSet.getInt("meal_order"));
                     planWithMealsToAdd.setRecipe_name(resultSet.getString("recipe_name"));
-                    planWithMealsToAdd.setRecipe_description(resultSet.getString("recipe_description"));
+                    planWithMealsToAdd.setRecipe_order(resultSet.getInt("recipe_order"));
                     planWithMealsToAdd.setRecipe_id(resultSet.getInt("recipe_id"));
-                    planWithMealsToAdd.setOrder(resultSet.getInt("order"));
                     planWithMeals.add(planWithMealsToAdd);
                 }
             }

@@ -2,44 +2,38 @@ package pl.coderslab.model;
 
 public class PlanWithMeals {
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
-    private int id;
     private String day_name;
+    private int day_name_order;
     private String meal_name;
+    private int meal_order;
     private String recipe_name;
-    private String recipe_description;
+    private int recipe_order;
     private int recipe_id;
-    private int order;
+
+    public PlanWithMeals(String day_name, int day_name_order, String meal_name, int meal_order, String recipe_name, int recipe_order, int recipe_id) {
+        this.day_name = day_name;
+        this.day_name_order = day_name_order;
+        this.meal_name = meal_name;
+        this.meal_order = meal_order;
+        this.recipe_name = recipe_name;
+        this.recipe_order = recipe_order;
+        this.recipe_id = recipe_id;
+    }
 
     public PlanWithMeals(){}
-
-    public PlanWithMeals(String day_name, String meal_name, String recipe_name, String recipe_description, int recipe_id, int order) {
-        this.day_name = day_name;
-        this.meal_name = meal_name;
-        this.recipe_name = recipe_name;
-        this.recipe_description = recipe_description;
-        this.recipe_id = recipe_id;
-        this.order = order;
-    }
 
     @Override
     public String toString() {
         return "PlanWithMeals{" +
-                "id=" + id +
-                ", day_name='" + day_name + '\'' +
+                "day_name='" + day_name + '\'' +
+                ", day_name_order=" + day_name_order +
                 ", meal_name='" + meal_name + '\'' +
+                ", meal_order=" + meal_order +
                 ", recipe_name='" + recipe_name + '\'' +
-                ", recipe_description='" + recipe_description + '\'' +
+                ", recipe_order=" + recipe_order +
                 ", recipe_id=" + recipe_id +
-                ", order=" + order +
                 '}';
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getDay_name() {
@@ -50,12 +44,28 @@ public class PlanWithMeals {
         this.day_name = day_name;
     }
 
+    public int getDay_name_order() {
+        return day_name_order;
+    }
+
+    public void setDay_name_order(int day_name_order) {
+        this.day_name_order = day_name_order;
+    }
+
     public String getMeal_name() {
         return meal_name;
     }
 
     public void setMeal_name(String meal_name) {
         this.meal_name = meal_name;
+    }
+
+    public int getMeal_order() {
+        return meal_order;
+    }
+
+    public void setMeal_order(int meal_order) {
+        this.meal_order = meal_order;
     }
 
     public String getRecipe_name() {
@@ -66,12 +76,12 @@ public class PlanWithMeals {
         this.recipe_name = recipe_name;
     }
 
-    public String getRecipe_description() {
-        return recipe_description;
+    public int getRecipe_order() {
+        return recipe_order;
     }
 
-    public void setRecipe_description(String recipe_description) {
-        this.recipe_description = recipe_description;
+    public void setRecipe_order(int recipe_order) {
+        this.recipe_order = recipe_order;
     }
 
     public int getRecipe_id() {
@@ -82,13 +92,10 @@ public class PlanWithMeals {
         this.recipe_id = recipe_id;
     }
 
-    public int getOrder() {
-        return order;
-    }
 
-    public void setOrder(int order) {
-        this.order = order;
-    }
+
+
 
 
 }
+
